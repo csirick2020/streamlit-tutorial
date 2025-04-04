@@ -1,5 +1,7 @@
 # YouTube URL: https://www.youtube.com/watch?v=ckOAnis8lWg&list=PLa6CNrvKM5QU7AjAS90zCMIwi9RTFNIIW&index=22
 
+# Use 'streamlit run APP_NAME.py' in terminal to run the application
+
 import streamlit as st
 from PIL import Image
 from PIL.ImageFilter import *
