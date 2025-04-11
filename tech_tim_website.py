@@ -10,7 +10,9 @@ section1 = False  # st.write and Magic
 section2 = False  # Streamlit Data Flow
 section3 = False  # Text Elements
 section4 = False  # Images
-section5 = True  # Data Elements
+section5 = False  # Data Elements
+section6 = False  # Chart Elements
+section7 = True  # Form Elements
 # =========================================================
 
 # ---------------------------
@@ -129,3 +131,95 @@ elif section5:
 
     # Explanation
     st.write("Notice how the above two views are the EXACT same. This is because Streamlit treats a Python dictionary like JSON by default.")
+
+# ---------------------------
+# 6) Chart Elements
+# ---------------------------
+elif section6:
+    import pandas as pd
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # Title
+    st.title("Streamlit Charts Demo")
+
+    # Generate sample data
+    chart_data = pd.DataFrame(
+        np.random.randn(20, 3),
+        columns=['A', 'B', 'C']
+    )
+
+    # Area Chart Section
+    st.subheader("Area Chart")
+    st.area_chart(chart_data)
+
+    # Bar Chart Section
+    st.subheader("Bar Chart")
+    st.bar_chart(chart_data)
+
+    # Line Chart Section
+    st.subheader("Line Chart")
+    st.line_chart(chart_data)
+
+    # Scatter Chart Section
+    st.subheader("Scatter Chart")
+    scatter_data = pd.DataFrame({
+        'x': np.random.randn(100),
+        'y': np.random.randn(100)
+    })
+    st.scatter_chart(scatter_data)
+
+    # Map Section (displaying random points on a map)
+    st.subheader("Map")
+    map_data = pd.DataFrame(
+        np.random.randn(100, 2) / [50, 50] + [37.76, -122.4],  # Coordinates around SF
+        columns=['lat', 'lon']
+    )
+    st.map(map_data)
+
+    # Pyplot section
+    st.subheader("Pyplot Chart")
+    fig, ax = plt.subplots()
+    ax.plot(chart_data['A'], label='A')
+    ax.plot(chart_data['B'], label='B')
+    ax.plot(chart_data['C'], label='C')
+    ax.set_title("Pyplot Line Chart")
+    ax.legend()
+    st.pyplot(fig)
+
+# ---------------------------
+# 7) Form Elements
+# ---------------------------
+elif section7:
+    import pandas as pd
+
+    # Title
+    st.title("Streamlit Form Demo")
+
+    # Form to hold the interactive elements
+    with st.form(key="sample_form"):
+
+        # Text Input
+        st.subheader("Text Inputs")
+        name = st.text_input("Enter your name")
+        feedback = st.text_area("Provide your feedback")
+
+        # Date and Time Inputs
+        st.subheader("Date and Time Inputs")
+        dob = st.date_input("Select your date of birth")
+        time = st.time_input("Choose a preferred time")
+
+        # Selectors
+        st.subheader("Selectors")
+        choice = st.radio("Choose an option", ['Option 1', 'Option 2', 'Option 3'])
+        gender = st.selectbox("Select your gender", ['Male', 'Female', 'Other'])
+        slider_value = st.select_slider("Select a range", options=[1, 2, 3, 4, 5])
+
+        # Toggles and Checkboxes
+        st.subheader("Toggles & Checkboxes")
+        notifications = st.checkbox("Receive notifications?")
+        toggle_value = st.checkbox("Enable dark mode?", value=False)
+
+        # Submit Button for the Form
+        submit_button = st.form_submit_button(label="Submit")
+
