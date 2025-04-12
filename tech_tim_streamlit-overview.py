@@ -6,13 +6,13 @@ import streamlit as st
 
 # Separate sections (for different parts of the tutorial)
 # =========================================================
-section1 = False  # st.write and Magic
+section1 = True  # st.write and Magic
 section2 = False  # Streamlit Data Flow
 section3 = False  # Text Elements
 section4 = False  # Images
 section5 = False  # Data Elements
 section6 = False  # Chart Elements
-section7 = True  # Form Elements
+section7 = False  # Form Elements
 # =========================================================
 
 # ---------------------------
