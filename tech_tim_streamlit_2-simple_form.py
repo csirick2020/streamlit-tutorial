@@ -3,7 +3,7 @@
 # Use 'streamlit run APP_NAME.py' in terminal to run the application
 
 import streamlit as st
-from datetime import datetime  # To set mix, max dates on st.date_input
+from datetime import datetime  # To set min, max dates on st.date_input
 
 st.title("User Information Form")
 
